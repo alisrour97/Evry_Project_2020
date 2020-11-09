@@ -122,7 +122,7 @@
    <sensor type="ray" name="TeraRanger">
       <pose>0 0 0 0 0 0</pose>
       <visualize>true</visualize>
-      <update_rate>50</update_rate>
+      <update_rate>5</update_rate>
       <ray>
         <!--Add noise
         <noise>
@@ -154,7 +154,7 @@
       <plugin filename="libgazebo_ros_range.so" name="gazebo_ros_range">
          <gaussianNoise>0.05</gaussianNoise>
          <alwaysOn>true</alwaysOn>
-         <updateRate>50</updateRate>
+         <updateRate>5</updateRate>
          <topicName>sensor/sonar_front</topicName>
          <frameName>base_sonar_front</frameName>
          <radiation>INFRARED</radiation>

@@ -123,65 +123,7 @@
       </inertial> -->
    </link>
 
-  <!-- <link name="raspicam">
-    <visual>
-      <geometry>
-        <box size="${camSize} ${camSize} ${camSize}"/>
-      </geometry>
-      <xacro:default_origin z="0"/>
-      <material name="red"/>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="${camSize} ${camSize} ${camSize}"/>
-      </geometry>
-      <xacro:default_origin z="0"/>
-    </collision>
-    <xacro:default_inertial mass="0"/>
-  </link>
 
-  <joint name="base_link_to_cam" type="fixed">
-    <parent link="base_link"/>
-    <child link="raspicam"/>
-    <origin xyz="0 0.13 ${baseAltitude+camSize/2}" rpy="0 0 ${pi/2}"/>
-  </joint> -->
-
-  <!-- <link name="arTag">
-    <visual>
-      <geometry>
-        <mesh filename="package://evry_project_description/meshes/aruco0.dae" scale="5 5 5"/>
-      </geometry>
-    </visual>
-    <xacro:default_inertial mass="0"/>
-  </link> -->
-
-  <!-- <joint name="base_link_to_aruco" type="fixed">
-    <parent link="base_link"/>
-    <child link="arTag"/>
-    <origin xyz="0 0 ${baseAltitude + 0.005}" rpy="0 0 ${pi}"/>
-  </joint>
-
-
-  <link name="hokuyo_link">
-		<visual>
-			<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
-			<geometry>
-				<mesh filename="package://evry_project_description/meshes/hokuyo_link.STL" scale="2.5 2.5 2.5"/>
-			</geometry>
-			<material name="White">
-				<color rgba="0.9 0.9 0.9 1" />
-			</material>
-		</visual>
-    <xacro:default_inertial mass="1.0"/>
-	</link>
-	<joint name="base_link_hokuyo_joint" type="fixed">
-		<origin xyz="0 0.125 0.078" rpy="0 0 ${pi/2}" />
-		<parent link="base_link" />
-		<child link="hokuyo_link" />
-		<axis xyz="0 0 1" />
-	</joint> -->
-
-  <!--Adding sonar to the robot -->
 
 
 
