@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 import rospy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Pose2D
 from sensor_msgs.msg import Range
 
+from evry_project_plugins.srv import DistanceToFlag
 
 class Robot:
     def __init__(self, group, robot_name):
@@ -49,6 +50,19 @@ class Robot:
 
         self.cmd_vel_pub.publish(cmd_vel)
 
+    def getDistanceToFlag(this):
+        rospy.wait_for_service('/distanceToFlag')
+        try:
+            service = rospy.ServiceProxy('/distanceToFlag', DistanceToFlag)
+            pose = Pose2D()
+            pose.x = 0.0
+            pose.y = 0.0
+            pose.theta = 0.0
+            result = service(pose)
+            return result.distance
+        except rospy.ServiceException as e :
+            print("Service call failed: %s"%e)
+
 def run_demo():
     '''Main loop'''
     group = rospy.get_param("~group")
@@ -61,6 +75,9 @@ def run_demo():
             #Write here your strategy..
             print("SONAR VALUE FOR "+str(robot_name)+" :")
             print(robot.get_sonar())
+
+            print("Distance to flag : ")
+            print(robot.getDistanceToFlag())
 
             velocity = 0
             angle = 0
