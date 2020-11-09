@@ -31,7 +31,6 @@ namespace gazebo{
       std::normal_distribution<double> _distribution;
 
       std::vector<geometry_msgs::Pose2D> _flags_poses;
-      int _nbFlags;
 
       float getMinDist(const geometry_msgs::Pose2D& msg);
       bool distanceToFlag(evry_project_plugins::DistanceToFlag::Request& req, evry_project_plugins::DistanceToFlag::Response& res);

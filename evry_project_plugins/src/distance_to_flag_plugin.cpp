@@ -10,10 +10,10 @@ namespace gazebo{
   }
 
   void DistanceToFlagPlugin::Load(physics::WorldPtr world, sdf::ElementPtr sdf){
-    _nbFlags = sdf->GetElement("nbFlags")->Get<int>();
+    int nbFlags = sdf->GetElement("nbFlags")->Get<int>();
 
     //get the flags poses and store it in the list _flags_poses
-    for(int i = 1; i < _nbFlags+1; i++){
+    for(int i = 1; i < nbFlags+1; i++){
       ignition::math::Pose3d model_pose = world->ModelByName("flag_" + std::to_string(i))->WorldPose();
       geometry_msgs::Pose2D flag_pose;
       flag_pose.x = model_pose.Pos().X();
