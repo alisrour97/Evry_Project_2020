@@ -21,17 +21,17 @@
 
     <!-- ROBOT 1 -->
 	  <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-	   args="-urdf -param /robot -x -14 -y -5 -z 0 -model robot_$(arg group)1" ns="robot_$(arg group)1"
+	   args="-urdf -param /robot -x -14 -y -5 -z 0 -model robot_$(arg group)1" ns="group_$(arg group)/robot_1"
      if="$(eval arg('nbr_robot') > 0)"/>
 
      <!-- ROBOT 2 -->
      <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-      args="-urdf -param /robot -x -14 -y 0 -z 0 -model robot_$(arg group)2" ns="robot_$(arg group)2"
+      args="-urdf -param /robot -x -14 -y 0 -z 0 -model robot_$(arg group)2" ns="group_$(arg group)/robot_2"
       if="$(eval arg('nbr_robot') > 1)"/>
 
       <!-- ROBOT 3 -->
       <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-       args="-urdf -param /robot -x -14 -y 5 -z 0 -model robot_$(arg group)3" ns="robot_$(arg group)3"
+       args="-urdf -param /robot -x -14 -y 5 -z 0 -model robot_$(arg group)3" ns="group_$(arg group)/robot_3"
        if="$(eval arg('nbr_robot') > 2)"/>
 
 
