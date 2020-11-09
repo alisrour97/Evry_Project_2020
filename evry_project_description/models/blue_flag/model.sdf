@@ -29,7 +29,10 @@
 
         <!-- BLUE -->
         <material>
-          <ambient>0 0 1 1</ambient>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
         </material>
 
       </visual>
