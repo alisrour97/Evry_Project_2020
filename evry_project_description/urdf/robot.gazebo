@@ -80,7 +80,7 @@
       <commandTopic>cmd_vel</commandTopic>
 			<odometryTopic>odom</odometryTopic>
 			<odometryFrame>odom</odometryFrame>
-			<odometryRate>10.0</odometryRate>
+			<odometryRate>5.0</odometryRate>
 			<robotBaseFrame>base_footprint</robotBaseFrame>
 		</plugin>
 	</gazebo>
