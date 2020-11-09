@@ -8,14 +8,12 @@ from evry_project_plugins.srv import DistanceToFlag
 
 class Robot:
     def __init__(self, group, robot_name):
-        #ns : Name of the robot, like robot_A1, robot_A2 etc.
-        #To be used for your subscriber and publisher with the robot itself
-
         self.speed = 0.0
         self.angle = 0.0
         self.sonar = 0.0 #Sonar distance
 
-
+        #ns : Name of the robot, like robot_A1, robot_A2 etc.
+        #To be used for your subscriber and publisher with the robot itself
         self.group = group
         self.robot_name = robot_name
         self.ns = self.group + "/" + self.robot_name
