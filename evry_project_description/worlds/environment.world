@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://red_flag</uri>
+      <name>flag_1</name>
+      <pose>1 1 0 0 0 0</pose>
+
+      <plugin name="dtfPlugin" filename="libdistance_to_flag_plugin.so">
+        <id>1</id>
+      </plugin>
+    </include>
+
+    <include>
+      <uri>model://green_flag</uri>
+      <name>flag_2</name>
+      <pose>6 4 0 0 0 0</pose>
+
+      <plugin name="dtfPlugin" filename="libdistance_to_flag_plugin.so">
+        <id>2</id>
+      </plugin>
+    </include>
+
+    <include>
+      <uri>model://blue_flag</uri>
+      <name>flag_3</name>
+      <pose>2 2 0 0 0 0</pose>
+
+      <plugin name="dtfPlugin" filename="libdistance_to_flag_plugin.so">
+        <id>3</id>
+      </plugin>
+    </include>
+  </world>
+</sdf>

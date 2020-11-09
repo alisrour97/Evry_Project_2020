@@ -1,0 +1,3 @@
+geometry_msgs/Pose2D agent_pose
+---
+float64 distance

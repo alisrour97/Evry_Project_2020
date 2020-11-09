@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.4">
+  <model name="flag">
+    <static>true</static>
+    <link name="flag">
+      <visual name="base">
+        <pose>0 0 0.5 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>1</length>
+          </cylinder>
+        </geometry>
+
+        <!-- BLACK -->
+        <material>
+          <ambient>0 0 0 1</ambient>
+        </material>
+      </visual>
+
+
+      <visual name="top">
+        <pose>0.25 0 1 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.6 0.2 0.4</size>
+          </box>
+        </geometry>
+
+        <!-- RED -->
+        <material>
+          <ambient>1 0 0 1</ambient>
+        </material>
+
+      </visual>
+    </link>
+  </model>
+</sdf>
