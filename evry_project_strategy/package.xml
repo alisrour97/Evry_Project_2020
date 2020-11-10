@@ -21,6 +21,8 @@
   <depend>rospy</depend>
   <depend>sensor_msgs</depend>
 
+  <!--<run_depend>evry_project_plugins</run_depend>-->
+
   <export>
 
 

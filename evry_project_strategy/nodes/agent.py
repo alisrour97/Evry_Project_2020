@@ -77,8 +77,8 @@ def run_demo():
             print("Distance to flag : ")
             print(robot.getDistanceToFlag())
 
-            velocity = 0
-            angle = 0
+            velocity = 0.0
+            angle = 0.0
             sonar = float(robot.get_sonar())
 
 
