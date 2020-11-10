@@ -41,7 +41,7 @@ The arguments are :
 * group:=XXX : set the letter name of your group
 * nbr_robot:=XXX : set the number of robot in your environment, maximum 3
 
-##### ON AN ANOTHER TERMINAL : To run the robot's program : 
+##### ON ANOTHER TERMINAL : To run the robot's program : 
 
 If you want to have the output of your code on <u>multiple</u> terminals : 
 
