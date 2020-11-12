@@ -9,7 +9,7 @@
   <!-- start world -->
   <param name="use_sim_time" value="true" />
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find evry_project_description)/worlds/environment.world"/>
+    <arg name="world_name" value="$(find evry_project_description)/worlds/lev1.world"/>
     <arg name="paused" value="false"/>
 		<arg name="use_sim_time" value="true"/>
 		<arg name="gui" value="true"/>
