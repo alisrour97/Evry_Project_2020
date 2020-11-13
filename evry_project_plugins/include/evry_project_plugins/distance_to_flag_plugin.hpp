@@ -32,7 +32,7 @@ namespace gazebo{
 
       std::vector<geometry_msgs::Pose2D> _flags_poses;
 
-      float getMinDist(const geometry_msgs::Pose2D& msg);
+      float getMinDist(const geometry_msgs::Pose2D& msg, int* imin);
       bool distanceToFlag(evry_project_plugins::DistanceToFlag::Request& req, evry_project_plugins::DistanceToFlag::Response& res);
   };
 }

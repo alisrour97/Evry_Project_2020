@@ -25,21 +25,25 @@ namespace gazebo{
     _dtf_service = _nh->advertiseService("distanceToFlag", &DistanceToFlagPlugin::distanceToFlag, this);
   }
 
-  float DistanceToFlagPlugin::getMinDist(const geometry_msgs::Pose2D& msg){
+  float DistanceToFlagPlugin::getMinDist(const geometry_msgs::Pose2D& msg, int* imin){
     float min_dist = FLT_MAX;
     float dx, dy, dist;
-    for(geometry_msgs::Pose2D pose: _flags_poses){
-      dx = pose.x - msg.x;
-      dy = pose.y - msg.y;
+    for(int i = 0; i < _flags_poses.size(); i++){
+      dx = _flags_poses[i].x - msg.x;
+      dy = _flags_poses[i].y - msg.y;
       dist = std::sqrt(dx*dx + dy*dy);
-      if(dist < min_dist)
+      if(dist < min_dist){
         min_dist = dist;
+        *imin = i+1; //the flag id starts at 1 not 0 (their gazebo model name)
+      }
     }
     return min_dist;
   }
 
   bool DistanceToFlagPlugin::distanceToFlag(evry_project_plugins::DistanceToFlag::Request& req, evry_project_plugins::DistanceToFlag::Response& res){
-    res.distance = getMinDist(req.agent_pose) + _distribution(_generator);
+    int imin = 1;
+    res.distance = getMinDist(req.agent_pose, &imin) + _distribution(_generator);
+    res.id_flag = imin;
     return true;
   }
 
