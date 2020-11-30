@@ -56,3 +56,5 @@ If you want to have the output of your code on a <u>single</u> terminal :
 The robot's code is located at */evry_project_strategy/nodes/agent.py* 
 
 You can edit directly the code itself and see the result.
+
+![Gazebo's environment with robots](https://github.com/JohvanyROB/Evry_Project_2020/blob/main/Gazebo.PNG)
