@@ -57,7 +57,7 @@ class Robot:
             pose.y = 0.0
             pose.theta = 0.0
             result = service(pose)
-            return result.distance
+            return result.distance, result.id_flag
         except rospy.ServiceException as e :
             print("Service call failed: %s"%e)
 
@@ -74,7 +74,7 @@ def run_demo():
             print("SONAR VALUE FOR "+str(robot_name)+" :")
             print(robot.get_sonar())
 
-            print("Distance to flag : ")
+            print("Distance to flag and ID : ")
             print(robot.getDistanceToFlag())
 
             velocity = 0.0
