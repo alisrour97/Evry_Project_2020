@@ -12,7 +12,7 @@ class Robot:
         self.angle = 0.0
         self.sonar = 0.0 #Sonar distance
 
-        #ns : Name of the robot, like robot_A1, robot_A2 etc.
+        #ns : Name of the robot, like /group_A/robot_1
         #To be used for your subscriber and publisher with the robot itself
         self.group = group
         self.robot_name = robot_name
