@@ -12,7 +12,7 @@ You need also git system :
 
 ## Create your environment
 
-First, if you do not have the catkin_ws folder, create it : 
+In a terminal create catkin_ws folder, as follow: 
 
 `mkdir -p ~/catkin_ws/src`
 
@@ -30,6 +30,8 @@ Finally, compile the project :
 
 `source ~/catkin_ws/devel/setup.bash`
 
+`echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc` 
+
 ## Run the code
 
 ##### ON ONE TERMINAL : To run the Gazebo environment : 
@@ -43,11 +45,11 @@ The arguments are :
 
 ##### ON ANOTHER TERMINAL : To run the robot's program : 
 
-If you want to have the output of your code on <u>multiple</u> terminals : 
+**1. If you want to have the output of your code on <u>multiple</u> terminals :** 
 
 `roslaunch evry_project_strategy agent_terminal.launch group:=A nbr_robot:=3`
 
-If you want to have the output of your code on a <u>single</u> terminal : 
+**2. If you want to have the output of your code on a <u>single</u> terminal :** 
 
 `roslaunch evry_project_strategy agent.launch group:=A nbr_robot:=3`
 
