@@ -7,16 +7,18 @@ from sensor_msgs.msg import Range
 from evry_project_plugins.srv import DistanceToFlag
 
 class Robot:
-    def __init__(self, group, robot_name):
+    def __init__(self, group, robot_name, nb_flags):
         self.speed = 0.0
         self.angle = 0.0
         self.sonar = 0.0 #Sonar distance
 
-        #ns : Name of the robot, like /group_A/robot_1
+        #ns : Name of the robot, like robot_A1, robot_A2 etc.
         #To be used for your subscriber and publisher with the robot itself
         self.group = group
         self.robot_name = robot_name
         self.ns = self.group + "/" + self.robot_name
+
+        self.nb_flags = nb_flags    #Number of flags to discover in the environment
 
         '''Listener and publisher'''
 
@@ -37,9 +39,6 @@ class Robot:
         self.pub_velocity()
 
     def pub_velocity(self):
-        # Max speed of 2m/s
-        self.speed = min(self.speed, 2)
-        
         cmd_vel = Twist()
         cmd_vel.linear.x = self.speed
         cmd_vel.linear.y = 0.0
@@ -60,7 +59,7 @@ class Robot:
             pose.y = 0.0
             pose.theta = 0.0
             result = service(pose)
-            return result.distance, result.id_flag
+            return result.distance
         except rospy.ServiceException as e :
             print("Service call failed: %s"%e)
 
@@ -68,7 +67,8 @@ def run_demo():
     '''Main loop'''
     group = rospy.get_param("~group")
     robot_name = rospy.get_param("~robot_name")
-    robot = Robot(group, robot_name)
+    nb_flags = rospy.get_param("nb_flags")
+    robot = Robot(group, robot_name, nb_flags)
     print("Robot : " + str(robot_name) +" from Group : " + str(group) + " is starting..")
 
     try:
@@ -77,11 +77,11 @@ def run_demo():
             print("SONAR VALUE FOR "+str(robot_name)+" :")
             print(robot.get_sonar())
 
-            print("Distance to flag and ID : ")
+            print("Distance to flag : ")
             print(robot.getDistanceToFlag())
 
-            velocity = 0.0
-            angle = 0.0
+            velocity = 0
+            angle = 0
             sonar = float(robot.get_sonar())
 
 

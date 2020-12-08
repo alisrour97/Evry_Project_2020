@@ -23,6 +23,7 @@ namespace gazebo{
 
     _nh = new ros::NodeHandle();
     _dtf_service = _nh->advertiseService("distanceToFlag", &DistanceToFlagPlugin::distanceToFlag, this);
+    _nh->setParam("nb_flags", nbFlags);
   }
 
   float DistanceToFlagPlugin::getMinDist(const geometry_msgs::Pose2D& msg, int* imin){
