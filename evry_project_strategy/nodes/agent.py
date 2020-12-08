@@ -2,6 +2,8 @@
 
 import rospy
 from geometry_msgs.msg import Twist, Pose2D
+# TD5 : We add the odometry message
+from nav_msgs.msg import Odometry
 from sensor_msgs.msg import Range
 
 from evry_project_plugins.srv import DistanceToFlag
@@ -11,6 +13,12 @@ class Robot:
         self.speed = 0.0
         self.angle = 0.0
         self.sonar = 0.0 #Sonar distance
+
+        # TD5 : We add the pose of the robot as global parameters
+        self.x = 0.0
+        self.y = 0.0
+        # Quaternion
+        self.qx, self.qy, self.qz, self.qw = 0.0, 0.0, 0.0, 0.0
 
         #ns : Name of the robot, like robot_A1, robot_A2 etc.
         #To be used for your subscriber and publisher with the robot itself
@@ -24,8 +32,19 @@ class Robot:
 
         rospy.Subscriber(self.ns + "/sensor/sonar_front", Range, self.callbacksonar)
         self.cmd_vel_pub = rospy.Publisher(self.ns + "/cmd_vel", Twist, queue_size = 1)
+        # TD5 : We listen the pose of the robot
+        rospy.Subscriber(self.ns + "/odom", Odometry, self.callbackpose)
 
         self.pub_velocity() #Run the publisher once
+
+    def callbackpose(self, data):
+        self.x = data.pose.pose.position.x
+        self.y = data.pose.pose.position.y
+
+        self.qx = data.pose.pose.quaternion.x
+        self.qy = data.pose.pose.quaternion.y
+        self.qz = data.pose.pose.quaternion.z
+        self.qw = data.pose.pose.quaternion.w
 
     def callbacksonar(self,data):
         self.sonar = data.range
@@ -55,8 +74,8 @@ class Robot:
         try:
             service = rospy.ServiceProxy('/distanceToFlag', DistanceToFlag)
             pose = Pose2D()
-            pose.x = 0.0
-            pose.y = 0.0
+            pose.x = self.x
+            pose.y = self.y
             pose.theta = 0.0
             result = service(pose)
             return result.distance
