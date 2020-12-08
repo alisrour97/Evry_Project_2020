@@ -3,13 +3,14 @@
 
   <arg name="group" default="A"/>
   <arg name="nbr_robot" default="3"/>
+  <arg name="env" default="lev1"/>
 
   <param name="/use_sim_time" value="true" />
 
   <!-- start world -->
   <param name="use_sim_time" value="true" />
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find evry_project_description)/worlds/lev1.world"/>
+    <arg name="world_name" value="$(find evry_project_description)/worlds/$(arg env).world"/>
     <arg name="paused" value="false"/>
 		<arg name="use_sim_time" value="true"/>
 		<arg name="gui" value="true"/>
