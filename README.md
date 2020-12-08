@@ -60,3 +60,9 @@ The robot's code is located at */evry_project_strategy/nodes/agent.py*
 You can edit directly the code itself and see the result.
 
 ![Gazebo's environment with robots](https://github.com/JohvanyROB/Evry_Project_2020/blob/main/Gazebo.PNG)
+
+## Change the environment
+
+By default, your robots operate in a simple environment with basic obstacles (lev1), but if you want to evaluate the robustness of your strategy, you can move to a more complex environment (lev2). You just need to modify the value of the argument **env** when launching the file **simu_robot.launch** as follow:
+
+`roslaunch evry_project_description simu_robot.launch env:=lev2`
