@@ -41,10 +41,10 @@ class Robot:
         self.x = data.pose.pose.position.x
         self.y = data.pose.pose.position.y
 
-        self.qx = data.pose.pose.quaternion.x
-        self.qy = data.pose.pose.quaternion.y
-        self.qz = data.pose.pose.quaternion.z
-        self.qw = data.pose.pose.quaternion.w
+        self.qx = data.pose.pose.orientation.x
+        self.qy = data.pose.pose.orientation.y
+        self.qz = data.pose.pose.orientation.z
+        self.qw = data.pose.pose.orientation.w
 
     def callbacksonar(self,data):
         self.sonar = data.range
@@ -69,11 +69,12 @@ class Robot:
 
         self.cmd_vel_pub.publish(cmd_vel)
 
-    def getDistanceToFlag(this):
+    def getDistanceToFlag(self):
         rospy.wait_for_service('/distanceToFlag')
         try:
             service = rospy.ServiceProxy('/distanceToFlag', DistanceToFlag)
             pose = Pose2D()
+            # TD5 : We update the pose into the service
             pose.x = self.x
             pose.y = self.y
             pose.theta = 0.0
@@ -90,26 +91,23 @@ def run_demo():
     robot = Robot(group, robot_name, nb_flags)
     print("Robot : " + str(robot_name) +" from Group : " + str(group) + " is starting..")
 
-    try:
-        while not rospy.is_shutdown():
-            #Write here your strategy..
-            print("SONAR VALUE FOR "+str(robot_name)+" :")
-            print(robot.get_sonar())
+    while not rospy.is_shutdown():
+        #Write here your strategy..
+        print("SONAR VALUE FOR "+str(robot_name)+" :")
+        print(robot.get_sonar())
 
-            print("Distance to flag : ")
-            print(robot.getDistanceToFlag())
+        print("Distance to flag : ")
+        print(robot.getDistanceToFlag())
 
-            velocity = 0
-            angle = 0
-            sonar = float(robot.get_sonar())
+        velocity = 0
+        angle = 0
+        sonar = float(robot.get_sonar())
 
 
-            #Finishing by publishing the desired speed. DO NOT TOUCH.
-            robot.set_speed_angle(velocity,angle)
-            rospy.sleep(0.5)
+        #Finishing by publishing the desired speed. DO NOT TOUCH.
+        robot.set_speed_angle(velocity,angle)
+        rospy.sleep(0.5)
 
-    except:
-        print("Interruption from user")
 
 
 if __name__ == "__main__":
