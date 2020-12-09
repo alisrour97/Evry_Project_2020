@@ -71,26 +71,25 @@ def run_demo():
     robot = Robot(group, robot_name, nb_flags)
     print("Robot : " + str(robot_name) +" from Group : " + str(group) + " is starting..")
 
-    try:
-        while not rospy.is_shutdown():
-            #Write here your strategy..
-            print("SONAR VALUE FOR "+str(robot_name)+" :")
-            print(robot.get_sonar())
 
-            print("Distance to flag : ")
-            print(robot.getDistanceToFlag())
+    while not rospy.is_shutdown():
+        #Write here your strategy..
+        print("SONAR VALUE FOR "+str(robot_name)+" :")
+        print(robot.get_sonar())
 
-            velocity = 0
-            angle = 0
-            sonar = float(robot.get_sonar())
+        print("Distance to flag : ")
+        print(robot.getDistanceToFlag())
+
+        velocity = 0
+        angle = 0
+        sonar = float(robot.get_sonar())
 
 
-            #Finishing by publishing the desired speed. DO NOT TOUCH.
-            robot.set_speed_angle(velocity,angle)
-            rospy.sleep(0.5)
+        #Finishing by publishing the desired speed. DO NOT TOUCH.
+        robot.set_speed_angle(velocity,angle)
+        rospy.sleep(0.5)
 
-    except:
-        print("Interruption from user")
+
 
 
 if __name__ == "__main__":
