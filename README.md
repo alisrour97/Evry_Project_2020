@@ -10,6 +10,9 @@ You need also git system :
 
 `sudo apt update && sudo apt install git` 
 
+## Install rospkg for python3
+`sudo pip3 install rospkg`
+
 ## Create your environment
 
 In a terminal create catkin_ws folder, as follow: 
