@@ -58,6 +58,8 @@ class Robot:
         self.pub_velocity()
 
     def pub_velocity(self):
+        self.speed = min(2, self.speed) # Maximum speed at 2 m/s
+        
         cmd_vel = Twist()
         cmd_vel.linear.x = self.speed
         cmd_vel.linear.y = 0.0
