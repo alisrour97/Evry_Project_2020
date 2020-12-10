@@ -59,7 +59,7 @@ class Robot:
             pose.y = 0.0
             pose.theta = 0.0
             result = service(pose)
-            return result.distance
+            return (result.id_flag, result.distance)
         except rospy.ServiceException as e :
             print("Service call failed: %s"%e)
 
