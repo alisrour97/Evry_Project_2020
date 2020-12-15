@@ -30,13 +30,11 @@ Then go to this folder, and copy the project :
 
 Finally, compile the project : 
 
-`cd ~/catkin_ws`
-
-`catkin_make`
-
-`source ~/catkin_ws/devel/setup.bash`
-
-`echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc` 
+```bash
+cd ~/catkin_ws && catkin_make
+source ~/catkin_ws/devel/setup.bash
+echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+```
 
 ## Run the code
 
