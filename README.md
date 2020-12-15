@@ -24,9 +24,9 @@ In a terminal create catkin_ws folder, as follow:
 
 Then go to this folder, and copy the project :
 
-`cd ~/catkin_ws/src`
-
-`git clone https://github.com/JohvanyROB/Evry_Project_2020.git`
+```bash
+cd ~/catkin_ws/src && git clone https://github.com/JohvanyROB/Evry_Project_2020.git
+```
 
 Finally, compile the project : 
 
