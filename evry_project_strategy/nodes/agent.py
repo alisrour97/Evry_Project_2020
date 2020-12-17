@@ -6,7 +6,31 @@ from geometry_msgs.msg import Twist, Pose2D
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import Range
 
+import math
+
 from evry_project_plugins.srv import DistanceToFlag
+
+def euler_from_quaternion(x, y, z, w):
+        """
+        Convert a quaternion into euler angles (roll, pitch, yaw)
+        roll is rotation around x in radians (counterclockwise)
+        pitch is rotation around y in radians (counterclockwise)
+        yaw is rotation around z in radians (counterclockwise)
+        """
+        t0 = +2.0 * (w * x + y * z)
+        t1 = +1.0 - 2.0 * (x * x + y * y)
+        roll_x = math.atan2(t0, t1)
+
+        t2 = +2.0 * (w * y - z * x)
+        t2 = +1.0 if t2 > +1.0 else t2
+        t2 = -1.0 if t2 < -1.0 else t2
+        pitch_y = math.asin(t2)
+
+        t3 = +2.0 * (w * z + x * y)
+        t4 = +1.0 - 2.0 * (y * y + z * z)
+        yaw_z = math.atan2(t3, t4)
+
+        return roll_x, pitch_y, yaw_z # in radians
 
 class Robot:
     def __init__(self, group, robot_name, nb_flags):
@@ -18,8 +42,7 @@ class Robot:
         self.x = 0.0
         self.y = 0.0
         # Quaternion
-        self.qx, self.qy, self.qz, self.qw = 0.0, 0.0, 0.0, 0.0
-
+        self.yaw = 0.0 # Yaw angle rotation
         #ns : Name of the robot, like robot_A1, robot_A2 etc.
         #To be used for your subscriber and publisher with the robot itself
         self.group = group
@@ -41,10 +64,13 @@ class Robot:
         self.x = data.pose.pose.position.x
         self.y = data.pose.pose.position.y
 
-        self.qx = data.pose.pose.orientation.x
-        self.qy = data.pose.pose.orientation.y
-        self.qz = data.pose.pose.orientation.z
-        self.qw = data.pose.pose.orientation.w
+        qx = data.pose.pose.orientation.x
+        qy = data.pose.pose.orientation.y
+        qz = data.pose.pose.orientation.z
+        qw = data.pose.pose.orientation.w
+
+        _, _, self.yaw = euler_from_quaternion(qx, qy, qz, qw)
+        print(self.yaw)
 
     def callbacksonar(self,data):
         self.sonar = data.range
@@ -59,7 +85,7 @@ class Robot:
 
     def pub_velocity(self):
         self.speed = min(2, self.speed) # Maximum speed at 2 m/s
-        
+
         cmd_vel = Twist()
         cmd_vel.linear.x = self.speed
         cmd_vel.linear.y = 0.0
