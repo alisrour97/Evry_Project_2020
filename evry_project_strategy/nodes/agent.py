@@ -70,7 +70,6 @@ class Robot:
         qw = data.pose.pose.orientation.w
 
         _, _, self.yaw = euler_from_quaternion(qx, qy, qz, qw)
-        print(self.yaw)
 
     def callbacksonar(self,data):
         self.sonar = data.range
