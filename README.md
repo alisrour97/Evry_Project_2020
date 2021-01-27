@@ -83,4 +83,21 @@ This algorithm depends on continuously sensing the distance between the robot an
 
 ## The Flowchart of The Algorithm
 
+![ROS2](https://user-images.githubusercontent.com/46069427/106035955-fe41f200-60d4-11eb-87cb-0afd7d5b46ee.png)
+
+
+## Description
+
+To facilitate the understanding of this algorithm, we have developed the above flow chart which well describes the algorithm in details. This flow chart service as the base point where we converted it into a python code.
+Basically, this algorithm  depends on small displacement of forward and backward movements. In this displacement, the robot senses the ID of the flag and the distance to it. Based on these distances and ID’s found, we can properly guide the robot towards the flag in the four directions. This approach depends on continuously moving in small steps toward the goal to minimize the flag distance until we reach the flag/goal. We always keep in mind that the first priority of the robot is to avoid obstacles, that is why we always take the measurement of the sonar sensor and if the distance is less than a certain number, we activate the avoid obstacle function.
+
+## Robots Cooperation
+
+The mission coordination part is that when a robot finds a flag, it publishes it via a topic where all the robots can update their list of visited flags. So instead of one robot searching for all the flags, the three robots will cooperate with each other to fill the list of visited flags.
+
+## Testing and Validation
+
+The algorithm was very successful and was well adapted to the problem that we have. It can reach very high accuracies of less than 1-meter error in the flags position. A link to the video of first algorithm deployed for the three robots can be found on YouTube: https://youtu.be/zDzIvGVdQqg 
+
+
 
