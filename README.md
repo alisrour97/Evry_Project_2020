@@ -72,3 +72,15 @@ By default, your robots operate in a simple environment with basic obstacles (le
 You just need to modify the value of the argument **env** when launching the file **simu_robot.launch** as follow:
 
 `roslaunch evry_project_description simu_robot.launch env:=lev2`
+
+## The Algorithm Approach
+
+Several and various algorithms have been developed to help guide mobile robots to navigate in unknown environment. Mobile robots currently are used in various applications ranging from military, industrial and humanitarian applications. There are several algorithms developed for path planning like A star, Dijkstra, Voroni graphs, RRT and more.
+
+In this project we need find a strategy to navigate to all flags in gazebo environment taking into consideration the noisy environment and the unknown obstacles.
+
+This algorithm depends on continuously sensing the distance between the robot and the flag using some heuristic approach upon depending on small forward and backward movements, after this movements the robot could easily determine whether it should move in forward, backward, to the right or two the left and these movements are repeated until the robot reaches the desired flag. 
+
+## The Flowchart of The Algorithm
+
+
