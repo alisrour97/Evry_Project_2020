@@ -75,11 +75,11 @@ You just need to modify the value of the argument **env** when launching the fil
 
 ## The Algorithm Approach
 
-Several and various algorithms have been developed to help guide mobile robots to navigate in unknown environment. Mobile robots currently are used in various applications ranging from military, industrial and humanitarian applications. There are several algorithms developed for path planning like A star, Dijkstra, Voroni graphs, RRT and more.
+Mobile robots currently are used in various applications ranging from military, industrial and humanitarian applications.Several and various algorithms have been developed to help guide mobile robots to navigate in unknown environment like A star, Dijkstra, Voroni graphs, RRT and more.
 
 In this project we need find a strategy to navigate to all flags in gazebo environment taking into consideration the noisy environment and the unknown obstacles.
 
-This algorithm depends on continuously sensing the distance between the robot and the flag using some heuristic approach upon depending on small forward and backward movements, after this movements the robot could easily determine whether it should move in forward, backward, to the right or two the left and these movements are repeated until the robot reaches the desired flag. 
+This algorithm depends on continuously sensing the distance between the robot and the flag using some heuristic approach upon depending on small forward and backward movements, after this movements the robot can easily determine whether it should move in forward, backward, to the right or to the left and these movements are repeated until the robot reaches the desired flag. 
 
 ## The Flowchart of The Algorithm
 
@@ -93,7 +93,7 @@ Basically, this algorithm  depends on small displacement of forward and backward
 
 ## Robots Cooperation
 
-The mission coordination part is that when a robot finds a flag, it publishes it via a topic where all the robots can update their list of visited flags. So instead of one robot searching for all the flags, the three robots will cooperate with each other to fill the list of visited flags.
+The mission coordination part is set such that when a robot finds a flag, it publishes it via a topic where all the robots can update their list of visited flags. So instead of one robot searching for all the flags, the three robots will cooperate with each other to fill the list of visited flags.
 
 ## Testing and Validation
 
